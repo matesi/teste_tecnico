@@ -6,7 +6,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mauricio Teles da Silva",
   "license": "ISC",
-  "description": ""
+  "description": "Teste técnico para o processo seletivo - Back End",
+  "devDependencies": {
+    "typescript": "^5.6.2"
+  }
 }
