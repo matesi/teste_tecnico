@@ -3,3 +3,6 @@ node_modules
 
 # Arquivo package-lock.json
 package-lock.json
+
+# Arquivo imageBase64.txt
+imageBase64.txt

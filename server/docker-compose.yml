@@ -1,0 +1,17 @@
+name: backend-test-service
+
+services:
+  pg:
+    image: bitnami/postgresql:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USERNAME=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=llmservice
+  node:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app
