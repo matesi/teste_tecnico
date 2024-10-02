@@ -1,7 +1,7 @@
 import zod from 'zod';
 
 const envEnvKey = zod.object({
-    API_KEY: zod.string(),
+    GEMINI_API_KEY: zod.string(),
 });
 export const key = envEnvKey.parse(process.env);
 

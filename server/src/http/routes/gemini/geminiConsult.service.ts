@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { key, model } from './geminiEnv';
 import { stat } from "fs";
 
-const genAi = new GoogleGenerativeAI(key.API_KEY);
+const genAi = new GoogleGenerativeAI(key.GEMINI_API_KEY);
 
 const fileToGenerativePart = async (imageBase64: string, mimeType: string) => {
     imageBase64 = imageBase64.replace(/data\:image\/(jpeg|jpg|png)\;base64\,/gi, "");
