@@ -22,7 +22,7 @@ app.register(getMeasureRoute);
 
 app
   .listen({
-    port: 3333,
+    port: 3335,
   })
   .then(() => {
     console.log('HTTP server running!')

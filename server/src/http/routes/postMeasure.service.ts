@@ -1,7 +1,9 @@
 import zod from 'zod';
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 import { GetTextFromImageGemini } from './gemini/geminiConsult.service';
-import { stat } from 'fs';
+import { ProccessMeasure } from './postMeasure.controller';
+import { measure } from '../../db/schema';
+import { error } from 'console';
 
 export const measureRoute: FastifyPluginAsyncZod = async app => {
     app.post(
@@ -30,18 +32,22 @@ export const measureRoute: FastifyPluginAsyncZod = async app => {
       },
       async (request,reply) => {
         const body = request.body;
-        let statusCode = 200;
-        let message = "Operação realizada com sucesso";        
-        const returnGemini = await GetTextFromImageGemini(body);
-
-        if(returnGemini.status !== 200){
-          statusCode = returnGemini.status;
-          message = returnGemini.message;
+        const returnProcessMeasure = await ProccessMeasure(body);
+        
+        if(returnProcessMeasure.status === 200){
+          return reply.status(returnProcessMeasure.status).send(
+            {
+                image_url: returnProcessMeasure.message.imageUrl,
+                measure_value: returnProcessMeasure.message.measureValue,
+                measure_uuid: returnProcessMeasure.message.id
+            }
+          );
+        } else {
+          return reply.status(returnProcessMeasure.status).send({
+            error_code: returnProcessMeasure.status === 409 ? returnProcessMeasure.error_code : 'UNKNOWN_ERROR',
+            error_description: returnProcessMeasure.message
+          });
         }
-  
-        return reply.status(statusCode).send({
-          status: statusCode,
-          data: message});
       }
     );
   }

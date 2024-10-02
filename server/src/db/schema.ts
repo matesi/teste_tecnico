@@ -1,6 +1,5 @@
-import { pgTable, text, timestamp } from 'drizzle-orm/pg-core'
-import { createId } from '@paralleldrive/cuid2'
-import { integer } from 'drizzle-orm/pg-core'
+import { pgTable, text, timestamp,integer } from 'drizzle-orm/pg-core';
+import { createId } from '@paralleldrive/cuid2';
 
 export const measure = pgTable('measure', {
   id: text('id')
@@ -10,8 +9,7 @@ export const measure = pgTable('measure', {
   imageUrl: text('image_url'),
   customerCode: text('customer_code').notNull(),
   measureValue: integer('measure_value'),
-  measureDatetime: timestamp('measure_datetime', { withTimezone: true })
-  .defaultNow()
+  measure_datetime: timestamp('measure_datetime')
   .notNull(),
   measureType: text('measure_type').notNull(),
-})
+});
