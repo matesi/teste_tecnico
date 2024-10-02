@@ -6,7 +6,9 @@
     "api": "tsx watch --env-file .env src/http/server.ts",
     "seed": "tsx --env-file .env src/db/seed.ts",
     "migrate": "npx drizzle-kit migrate",
-    "generate": "npx drizzle-kit generate"
+    "generate": "npx drizzle-kit generate",
+    "start": "docker compose up -d",
+    "stop": "docker compose down"
   },
   "keywords": [],
   "author": "Mauricio Teles da Silva",
