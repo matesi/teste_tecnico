@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "api": "tsx watch --env-file .env src/http/server.ts"
+    "api": "tsx watch --env-file .env src/http/server.ts",
+    "seed": "tsx --env-file .env src/db/seed.ts",
+    "migrate": "npx drizzle-kit migrate",
+    "generate": "npx drizzle-kit generate"
   },
   "keywords": [],
   "author": "Mauricio Teles da Silva",
